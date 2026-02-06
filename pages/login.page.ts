@@ -1,15 +1,11 @@
 import { Locator, Page } from '@playwright/test';
 
 export class LoginPage {
-  myAccountButton: Locator;
   loginInput: Locator;
   passwordInput: Locator;
   loginButton: Locator;
 
   constructor(private page: Page) {
-    this.myAccountButton = this.page.getByRole('button', {
-      name: 'Zobrazit můj účet',
-    });
     this.loginInput = this.page.getByRole('textbox', {
       name: 'E-mailová adresa *',
     });
