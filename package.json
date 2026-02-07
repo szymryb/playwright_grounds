@@ -2,7 +2,12 @@
   "name": "projekt_podstawy",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "npx playwright test",
+    "test:login:headed": "npm run test tests/login.spec.ts -- --headed",
+    "test:login": "npx playwright test --grep \"@login\"",
+    "test:headed": "npx playwright test --headed"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
