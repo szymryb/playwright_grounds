@@ -1,8 +1,8 @@
-import { test, expect } from '@playwright/test';
-import { loginData } from '../test-data/login.data.ts';
-import { LoginPage } from '../pages/login.page.ts';
+import { expect, test } from '@playwright/test';
 import { CookiesPage } from '../pages/cookies.page.ts';
 import { HeaderPage } from '../pages/header.page.ts';
+import { LoginPage } from '../pages/login.page.ts';
+import { loginData } from '../test-data/login.data.ts';
 
 test(
   'successfull login with correct credentials',
@@ -14,7 +14,7 @@ test(
     const userEmail = loginData.userEmail;
     const userPassword = loginData.userPassword;
 
-    const loginPage = new LoginPage(page);
+    const loginPage = new LoginPage();
     const cookiesPage = new CookiesPage(page);
     const headerPage = new HeaderPage(page);
 
