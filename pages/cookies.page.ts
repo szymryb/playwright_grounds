@@ -13,7 +13,7 @@ export class CookiesPage {
     });
   }
 
-  async acceptCookies() {
+  async acceptCookies(): Promise<void> {
     await this.cookiesSettingsButton.click();
     await this.cookiesAcceptButton.click();
   }
