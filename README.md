@@ -1,31 +1,16 @@
-# Project Name
+# Tests for GAD application
 
-## Description
+## Prepare
 
-Brief description of your project goes here.
+### Local recommended tools:
 
-## Installation
+- VSC
+- Git
+- Node >16
 
-```bash
-npm install
-```
+### Installation and setup
 
-## Usage
-
-```bash
-npm start
-```
-
-## Features
-
-- Feature 1
-- Feature 2
-- Feature 3
-
-## Contributing
-
-Pull requests are welcome.
-
-## License
-
-MIT
+- (optional) install VSC recommended plugins
+- install dependencies: `npm install`
+- setup Playwright with: `npx playwright install --with-deps chromium`
+- setup husky with : `npx husky install`

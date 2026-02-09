@@ -5,7 +5,7 @@ import { LoginPage } from '../pages/login.page.ts';
 import { loginData } from '../test-data/login.data.ts';
 
 test(
-  'successfull login with correct credentials',
+  'successful login with correct credentials',
   {
     tag: '@login',
     annotation: { type: 'happy path', description: 'Basic happy path test' },
@@ -14,7 +14,7 @@ test(
     const userEmail = loginData.userEmail;
     const userPassword = loginData.userPassword;
 
-    const loginPage = new LoginPage();
+    const loginPage = new LoginPage(page);
     const cookiesPage = new CookiesPage(page);
     const headerPage = new HeaderPage(page);
 
