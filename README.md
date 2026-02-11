@@ -1,5 +1,3 @@
-# Tests for GAD application
-
 ## Prepare
 
 ### Local recommended tools:
