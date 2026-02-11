@@ -7,8 +7,10 @@
     "test:login:headed": "npm run test tests/login.spec.ts -- --headed",
     "test:login": "npx playwright test --grep \"@login\"",
     "test:headed": "npx playwright test --headed",
-    "format": "prettier --write .",
-    "lint": "npx eslint . --ext .ts --max-warnings=0",
+    "test:ui": "npm run test -- --ui",
+    "show-report": "npx playwright show-report",
+    "format:check": "npx prettier . --check \"!**.ts\"",
+    "lint": "npx eslint . --max-warnings=0",
     "lint:fix": "npx eslint . --ext .ts --fix",
     "prepare": "husky"
   },
