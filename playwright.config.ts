@@ -12,6 +12,11 @@ export default defineConfig({
   workers: undefined,
   reporter: 'html',
   use: {
+    baseURL: 'https://bauhaus-cz-pre-prod.vaimo.net',
+    httpCredentials: {
+      username: 'bauhauscz',
+      password: 'eD5fRcfhQQICfmc3xznQF4BX',
+    },
     actionTimeout: 0,
     trace: 'retain-on-failure',
     video: 'retain-on-failure',

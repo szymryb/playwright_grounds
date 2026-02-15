@@ -18,13 +18,13 @@ test(
     const cookiesPage = new CookiesPage(page);
     const headerPage = new HeaderPage(page);
 
-    await page.goto('https://www.bauhaus.cz/');
+    await page.goto('');
     await cookiesPage.acceptCookies();
     await headerPage.myAccountButton.click();
 
     await loginPage.login(userEmail, userPassword);
 
     await headerPage.myAccountButton.click();
-    await expect(page).toHaveURL('https://www.bauhaus.cz/my-account');
+    await expect(page).toHaveURL('/my-account');
   },
 );
