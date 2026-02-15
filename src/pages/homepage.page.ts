@@ -10,9 +10,13 @@ export class HomePage {
 
   async navigate(): Promise<void> {
     await this.page.goto(this.url);
-    const title = await this.page.title();
-    expect(title).toContain(
+    expect(this.title()).resolves.toContain(
       'BAUHAUS Váš specialista pro dílnu, dům a zahradu | bauhaus.cz',
     );
+  }
+
+  async title(): Promise<string> {
+    await this.page.waitForLoadState();
+    return this.page.title();
   }
 }
