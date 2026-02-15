@@ -1,4 +1,4 @@
-import { Page } from '@playwright/test';
+import { expect, Page } from '@playwright/test';
 
 export class HomePage {
   readonly page: Page;
@@ -10,5 +10,9 @@ export class HomePage {
 
   async navigate(): Promise<void> {
     await this.page.goto(this.url);
+    const title = await this.page.title();
+    expect(title).toContain(
+      'BAUHAUS Váš specialista pro dílnu, dům a zahradu | bauhaus.cz',
+    );
   }
 }
