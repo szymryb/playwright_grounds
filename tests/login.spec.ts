@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
+import { HeaderPage } from '../src/components/header.ts';
 import { CookiesPage } from '../src/pages/cookies.page.ts';
-import { HeaderPage } from '../src/pages/header.page.ts';
 import { HomePage } from '../src/pages/homepage.page.ts';
 import { LoginPage } from '../src/pages/login.page.ts';
 import { loginData } from '../test-data/login.data.ts';
