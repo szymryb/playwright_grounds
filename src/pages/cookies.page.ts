@@ -6,7 +6,12 @@ export class CookiesPage {
   cookiesAcceptButton: Locator;
 
   constructor(private page: Page) {
-    this.cookieModal = this.page.locator('.modal-wrap cookie-modal');
+    // this.cookieModal = this.page.locator('.modal-wrap cookie-modal');
+    this.cookieModal = this.page
+      .getByRole('dialog', {
+        name: 'Jaké cookies používáme',
+      })
+      .locator('form');
     this.cookiesSettingsButton = this.page.getByRole('button', {
       name: 'Nastavení preferencí',
     });
