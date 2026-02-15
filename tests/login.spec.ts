@@ -1,6 +1,7 @@
 import { expect, test } from '@playwright/test';
 import { CookiesPage } from '../pages/cookies.page.ts';
 import { HeaderPage } from '../pages/header.page.ts';
+import { HomePage } from '../pages/homepage.page.ts';
 import { LoginPage } from '../pages/login.page.ts';
 import { loginData } from '../test-data/login.data.ts';
 
@@ -17,8 +18,9 @@ test(
     const loginPage = new LoginPage(page);
     const cookiesPage = new CookiesPage(page);
     const headerPage = new HeaderPage(page);
+    const homePage = new HomePage(page);
 
-    await page.goto('');
+    await homePage.navigate();
     await cookiesPage.acceptCookies();
     await headerPage.myAccountButton.click();
 
