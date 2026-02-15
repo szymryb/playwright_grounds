@@ -1,5 +1,4 @@
 import { expect, test } from '@playwright/test';
-import { HeaderPage } from '../src/components/header.ts';
 import { CookiesPage } from '../src/pages/cookies.page.ts';
 import { HomePage } from '../src/pages/homepage.page.ts';
 import { LoginPage } from '../src/pages/login.page.ts';
@@ -17,16 +16,15 @@ test(
 
     const loginPage = new LoginPage(page);
     const cookiesPage = new CookiesPage(page);
-    const headerPage = new HeaderPage(page);
     const homePage = new HomePage(page);
 
     await homePage.navigate();
     await cookiesPage.acceptCookies();
-    await headerPage.myAccountButton.click();
+    await loginPage.header.myAccountButton.click();
 
     await loginPage.login(userEmail, userPassword);
 
-    await headerPage.myAccountButton.click();
+    await loginPage.header.myAccountButton.click();
     await expect(page).toHaveURL('/my-account');
   },
 );

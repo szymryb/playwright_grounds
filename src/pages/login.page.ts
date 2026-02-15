@@ -1,9 +1,11 @@
 import { Locator, Page } from '@playwright/test';
+import { Header } from '../components/header.ts';
 
 export class LoginPage {
   loginInput: Locator;
   passwordInput: Locator;
   loginButton: Locator;
+  header: Header;
 
   constructor(private page: Page) {
     this.loginInput = this.page.getByRole('textbox', {
@@ -13,6 +15,7 @@ export class LoginPage {
       name: 'Heslo *',
     });
     this.loginButton = this.page.getByTestId('loginSubmit');
+    this.header = new Header(this.page);
   }
 
   async login(userEmail: string, userPassword: string): Promise<void> {

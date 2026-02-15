@@ -1,6 +1,6 @@
 import { Locator, Page } from '@playwright/test';
 
-export class HeaderPage {
+export class Header {
   myAccountButton: Locator;
 
   constructor(private page: Page) {
