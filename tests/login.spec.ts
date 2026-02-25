@@ -18,7 +18,7 @@ test(
     const cookiesPage = new CookiesPage(page);
     const homePage = new HomePage(page);
 
-    await homePage.navigate();
+    await homePage.goto();
     await cookiesPage.acceptCookies();
     await loginPage.header.myAccountButton.click();
 

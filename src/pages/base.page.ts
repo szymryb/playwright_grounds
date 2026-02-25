@@ -1,14 +1,13 @@
 import { Page } from '@playwright/test';
 
 export class BasePage {
-  readonly page: Page;
-  url = '';
+  url: string;
 
-  constructor(page: Page) {
-    this.page = page;
+  constructor(protected page: Page) {
+    this.url = '';
   }
 
-  async navigate(): Promise<void> {
+  async goto(): Promise<void> {
     await this.page.goto(this.url);
   }
 
