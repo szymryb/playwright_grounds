@@ -11,8 +11,8 @@ test(
     annotation: { type: 'happy path', description: 'Basic happy path test' },
   },
   async ({ page }) => {
-    const userEmail = loginData.userEmail;
-    const userPassword = loginData.userPassword;
+    const userEmail = loginData.userEmail!;
+    const userPassword = loginData.userPassword!;
 
     const loginPage = new LoginPage(page);
     const cookiesPage = new CookiesPage(page);
