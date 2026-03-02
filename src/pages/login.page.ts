@@ -6,6 +6,7 @@ export class LoginPage {
   passwordInput: Locator;
   loginButton: Locator;
   header: Header;
+  loginError: Locator;
 
   constructor(private page: Page) {
     this.loginInput = this.page.getByRole('textbox', {
@@ -16,6 +17,7 @@ export class LoginPage {
     });
     this.loginButton = this.page.getByTestId('loginSubmit');
     this.header = new Header(this.page);
+    this.loginError = this.page.getByTestId('errorMessage');
   }
 
   async login(userEmail: string, userPassword: string): Promise<void> {
