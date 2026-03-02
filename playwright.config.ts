@@ -1,4 +1,6 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 import { defineConfig, devices } from '@playwright/test';
+require('dotenv').config();
 
 /**
  * See https://playwright.dev/docs/test-configuration.
