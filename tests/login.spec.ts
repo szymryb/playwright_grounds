@@ -20,6 +20,11 @@ test.describe('Verify login', () => {
       const homePage = new HomePage(page);
 
       await homePage.goto();
+      await homePage.waitForPageToLoadUrl();
+      const title = await homePage.title();
+      expect(title).toContain(
+        'BAUHAUS Váš specialista pro dílnu, dům a zahradu',
+      );
       await cookiesPage.acceptCookies();
       await loginPage.header.myAccountButton.click();
 
@@ -40,6 +45,7 @@ test.describe('Verify login', () => {
     const homePage = new HomePage(page);
     // Act
     await homePage.goto();
+    await homePage.waitForPageToLoadUrl();
     await cookiesPage.acceptCookies();
     await loginPage.header.myAccountButton.click();
 
