@@ -1,5 +1,6 @@
 import { Locator, Page } from '@playwright/test';
 import { Header } from '../components/header.ts';
+import { RegisterUser } from '../models/user.model.ts';
 
 export class RegisterPage {
   registrationModalButton: Locator;
@@ -43,17 +44,12 @@ export class RegisterPage {
     this.header = new Header(this.page);
   }
 
-  async register(
-    userEmail: string,
-    userFirstName: string,
-    userLastName: string,
-    userPassword: string,
-  ): Promise<void> {
-    await this.emailInput.fill(userEmail);
-    await this.userFirstNameInput.fill(userFirstName);
-    await this.userLastNameInput.fill(userLastName);
-    await this.passwordInput.fill(userPassword);
-    await this.repeatPasswordInput.fill(userPassword);
+  async register(registerUserData: RegisterUser): Promise<void> {
+    await this.emailInput.fill(registerUserData.userEmail);
+    await this.userFirstNameInput.fill(registerUserData.userFirstName);
+    await this.userLastNameInput.fill(registerUserData.userLastName);
+    await this.passwordInput.fill(registerUserData.userPassword);
+    await this.repeatPasswordInput.fill(registerUserData.userPassword);
     await this.confirmCheckbox.check();
     await this.registerButton.click();
   }
