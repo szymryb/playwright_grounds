@@ -1,5 +1,6 @@
 import { Locator, Page } from '@playwright/test';
 import { Header } from '../components/header.ts';
+import { LoginUser } from '../models/user.models.ts';
 
 export class LoginPage {
   loginInput: Locator;
@@ -20,9 +21,9 @@ export class LoginPage {
     this.loginError = this.page.getByTestId('errorMessage');
   }
 
-  async login(userEmail: string, userPassword: string): Promise<void> {
-    await this.loginInput.fill(userEmail);
-    await this.passwordInput.fill(userPassword);
+  async login(loginUserData: LoginUser): Promise<void> {
+    await this.loginInput.fill(loginUserData.userEmail);
+    await this.passwordInput.fill(loginUserData.userPassword);
     await this.loginButton.click();
   }
 }

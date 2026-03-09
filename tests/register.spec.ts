@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker';
 import { expect, test } from '@playwright/test';
-import { RegisterUser } from '../src/models/user.model.ts';
+import { RegisterUser } from '../src/models/user.models.ts';
 import { CookiesPage } from '../src/pages/cookies.page.ts';
 import { HomePage } from '../src/pages/homepage.page.ts';
 import { LoginPage } from '../src/pages/login.page.ts';

@@ -12,8 +12,10 @@ test.describe('Verify login', () => {
       annotation: { type: 'happy path', description: 'Basic happy path test' },
     },
     async ({ page }) => {
-      const userEmail = testUser1.userEmail;
-      const userPassword = testUser1.userPassword;
+      const loginUserData = {
+        userEmail: testUser1.userEmail,
+        userPassword: testUser1.userPassword,
+      };
 
       const loginPage = new LoginPage(page);
       const cookiesPage = new CookiesPage(page);
@@ -28,7 +30,7 @@ test.describe('Verify login', () => {
       await cookiesPage.acceptCookies();
       await loginPage.header.myAccountButton.click();
 
-      await loginPage.login(userEmail, userPassword);
+      await loginPage.login(loginUserData);
 
       await loginPage.header.myAccountButton.click();
       await expect(page).toHaveURL('/my-account');
@@ -37,8 +39,10 @@ test.describe('Verify login', () => {
 
   test('reject login with incorrect password', async ({ page }) => {
     // Arrange
-    const userEmail = testUser1.userEmail;
-    const userPassword = 'incorrectPassword';
+    const loginUserData = {
+      userEmail: testUser1.userEmail,
+      userPassword: 'abc§§123', // intentionally incorrect password
+    };
 
     const loginPage = new LoginPage(page);
     const cookiesPage = new CookiesPage(page);
@@ -49,7 +53,7 @@ test.describe('Verify login', () => {
     await cookiesPage.acceptCookies();
     await loginPage.header.myAccountButton.click();
 
-    await loginPage.login(userEmail, userPassword);
+    await loginPage.login(loginUserData);
 
     // Assert
     await expect.soft(loginPage.loginError).toHaveText('Pole je povinné.');
