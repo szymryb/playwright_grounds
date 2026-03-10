@@ -36,5 +36,14 @@ test.describe('Verify registration', () => {
         name: 'Ještě potřebujeme potvrdit va',
       }),
     ).toBeVisible();
+
+    //confirm registration with API request
+    // await registerPage.confirmRegistrationViaApi(registerUserData.userEmail);
+    // await loginPage.login({
+    //   userEmail: registerUserData.userEmail,
+    //   userPassword: registerUserData.userPassword,
+    // });
+    // await loginPage.header.myAccountButton.click();
+    // await expect(page).toHaveURL('/my-account');
   });
 });

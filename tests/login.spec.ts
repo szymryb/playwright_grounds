@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { LoginUser } from '../src/models/user.models.ts';
 import { CookiesPage } from '../src/pages/cookies.page.ts';
 import { HomePage } from '../src/pages/homepage.page.ts';
 import { LoginPage } from '../src/pages/login.page.ts';
@@ -12,11 +13,6 @@ test.describe('Verify login', () => {
       annotation: { type: 'happy path', description: 'Basic happy path test' },
     },
     async ({ page }) => {
-      const loginUserData = {
-        userEmail: testUser1.userEmail,
-        userPassword: testUser1.userPassword,
-      };
-
       const loginPage = new LoginPage(page);
       const cookiesPage = new CookiesPage(page);
       const homePage = new HomePage(page);
@@ -30,7 +26,7 @@ test.describe('Verify login', () => {
       await cookiesPage.acceptCookies();
       await loginPage.header.myAccountButton.click();
 
-      await loginPage.login(loginUserData);
+      await loginPage.login(testUser1);
 
       await loginPage.header.myAccountButton.click();
       await expect(page).toHaveURL('/my-account');
@@ -39,9 +35,9 @@ test.describe('Verify login', () => {
 
   test('reject login with incorrect password', async ({ page }) => {
     // Arrange
-    const loginUserData = {
+    const loginUserData: LoginUser = {
       userEmail: testUser1.userEmail,
-      userPassword: 'abc§§123', // intentionally incorrect password
+      userPassword: 'incorrectPassword',
     };
 
     const loginPage = new LoginPage(page);

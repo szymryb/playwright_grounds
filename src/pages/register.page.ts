@@ -53,4 +53,15 @@ export class RegisterPage {
     await this.confirmCheckbox.check();
     await this.registerButton.click();
   }
+  //TBD : no straight endpoint for confirm registration
+  async confirmRegistrationViaApi(userEmail: string): Promise<void> {
+    const response = await this.page.request.get(
+      `https://bauhaus-cz-pre-prod-m2.vaimo.net/customer/account/confirm/?email=${userEmail}`,
+    );
+    if (response.status() !== 200) {
+      throw new Error(
+        `Failed to confirm registration for ${userEmail}. Status: ${response.status()}`,
+      );
+    }
+  }
 }
