@@ -1,9 +1,9 @@
 import { expect, test } from '@playwright/test';
-import { LoginUser } from '../src/models/user.models.ts';
+import { LoginUser } from '../src/models/user.model.ts';
 import { CookiesPage } from '../src/pages/cookies.page.ts';
 import { HomePage } from '../src/pages/homepage.page.ts';
 import { LoginPage } from '../src/pages/login.page.ts';
-import { testUser1 } from '../test-data/login.data.ts';
+import { testUser1 } from '../src/test-data/login.data.ts';
 
 test.describe('Verify login', () => {
   test(

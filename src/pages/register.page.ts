@@ -1,15 +1,15 @@
 import { Locator, Page } from '@playwright/test';
 import { Header } from '../components/header.ts';
-import { RegisterUser } from '../models/user.models.ts';
+import { RegisterUser } from '../models/user.model.ts';
 
 export class RegisterPage {
   registrationModalButton: Locator;
   registrationModalHeader: Locator;
-  emailInput: Locator;
+  userEmailInput: Locator;
   userFirstNameInput: Locator;
   userLastNameInput: Locator;
-  passwordInput: Locator;
-  repeatPasswordInput: Locator;
+  userPasswordInput: Locator;
+  userRepeatPasswordInput: Locator;
   confirmCheckbox: Locator;
   registerButton: Locator;
   header: Header;
@@ -21,7 +21,7 @@ export class RegisterPage {
     this.registrationModalHeader = this.page.getByRole('heading', {
       name: 'Vytvořit účet',
     });
-    this.emailInput = this.page.getByRole('textbox', {
+    this.userEmailInput = this.page.getByRole('textbox', {
       name: 'E-mailová adresa *',
     });
     this.userFirstNameInput = this.page.getByRole('textbox', {
@@ -30,11 +30,11 @@ export class RegisterPage {
     this.userLastNameInput = this.page.getByRole('textbox', {
       name: 'Příjmení *',
     });
-    this.passwordInput = this.page.getByRole('textbox', {
+    this.userPasswordInput = this.page.getByRole('textbox', {
       name: 'Heslo *',
       exact: true,
     });
-    this.repeatPasswordInput = this.page.getByRole('textbox', {
+    this.userRepeatPasswordInput = this.page.getByRole('textbox', {
       name: 'Opakovat heslo *',
     });
     this.confirmCheckbox = this.page.getByText('Souhlasím s podmínkami');
@@ -45,11 +45,11 @@ export class RegisterPage {
   }
 
   async register(registerUserData: RegisterUser): Promise<void> {
-    await this.emailInput.fill(registerUserData.userEmail);
+    await this.userEmailInput.fill(registerUserData.userEmail);
     await this.userFirstNameInput.fill(registerUserData.userFirstName);
     await this.userLastNameInput.fill(registerUserData.userLastName);
-    await this.passwordInput.fill(registerUserData.userPassword);
-    await this.repeatPasswordInput.fill(registerUserData.userPassword);
+    await this.userPasswordInput.fill(registerUserData.userPassword);
+    await this.userRepeatPasswordInput.fill(registerUserData.userPassword);
     await this.confirmCheckbox.check();
     await this.registerButton.click();
   }

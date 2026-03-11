@@ -1,6 +1,5 @@
-import { faker } from '@faker-js/faker';
 import { expect, test } from '@playwright/test';
-import { RegisterUser } from '../src/models/user.models.ts';
+import { randomUserData } from '../src/factories/user.factory.ts';
 import { CookiesPage } from '../src/pages/cookies.page.ts';
 import { HomePage } from '../src/pages/homepage.page.ts';
 import { LoginPage } from '../src/pages/login.page.ts';
@@ -8,13 +7,7 @@ import { RegisterPage } from '../src/pages/register.page.ts';
 
 test.describe('Verify registration', () => {
   test('successful registration with correct credentials', async ({ page }) => {
-    const registerUserData: RegisterUser = {
-      userFirstName: faker.person.firstName().replace(/[^A-Za-z]/g, ''),
-      userLastName: faker.person.lastName().replace(/[^A-Za-z]/g, ''),
-      userEmail: faker.internet.email(),
-      userPassword: faker.internet.password(),
-    };
-
+    const registerUserData = randomUserData();
     const cookiesPage = new CookiesPage(page);
     const homePage = new HomePage(page);
     const loginPage = new LoginPage(page);
@@ -23,7 +16,9 @@ test.describe('Verify registration', () => {
     await homePage.goto();
     await homePage.waitForPageToLoadUrl();
     const title = await homePage.title();
-    expect(title).toContain('BAUHAUS Váš specialista pro dílnu, dům a zahradu');
+    expect
+      .soft(title)
+      .toContain('BAUHAUS Váš specialista pro dílnu, dům a zahradu');
     await cookiesPage.acceptCookies();
     await loginPage.header.myAccountButton.click();
 
@@ -31,11 +26,13 @@ test.describe('Verify registration', () => {
     //await registerPage.registrationModalButton.click();
     await registerPage.register(registerUserData);
 
-    await expect(
-      page.getByRole('heading', {
-        name: 'Ještě potřebujeme potvrdit va',
-      }),
-    ).toBeVisible();
+    await expect
+      .soft(
+        page.getByRole('heading', {
+          name: 'Ještě potřebujeme potvrdit va',
+        }),
+      )
+      .toBeVisible();
 
     //confirm registration with API request
     // await registerPage.confirmRegistrationViaApi(registerUserData.userEmail);
