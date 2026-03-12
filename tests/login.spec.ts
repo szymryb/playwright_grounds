@@ -6,23 +6,32 @@ import { LoginPage } from '../src/pages/login.page.ts';
 import { testUser1 } from '../src/test-data/login.data.ts';
 
 test.describe('Verify login', () => {
-  test('successful login with correct credentials', async ({ page }) => {
-    const loginPage = new LoginPage(page);
-    const cookiesPage = new CookiesPage(page);
-    const homePage = new HomePage(page);
+  test(
+    'successful login with correct credentials',
+    {
+      tag: '@login',
+      annotation: { type: 'happy path', description: 'Basic happy path test' },
+    },
+    async ({ page }) => {
+      const loginPage = new LoginPage(page);
+      const cookiesPage = new CookiesPage(page);
+      const homePage = new HomePage(page);
 
-    await homePage.goto();
-    await homePage.waitForPageToLoadUrl();
-    const title = await homePage.title();
-    expect(title).toContain('BAUHAUS Váš specialista pro dílnu, dům a zahradu');
-    await cookiesPage.acceptCookies();
-    await loginPage.header.myAccountButton.click();
+      await homePage.goto();
+      await homePage.waitForPageToLoadUrl();
+      const title = await homePage.title();
+      expect(title).toContain(
+        'BAUHAUS Váš specialista pro dílnu, dům a zahradu',
+      );
+      await cookiesPage.acceptCookies();
+      await loginPage.header.myAccountButton.click();
 
-    await loginPage.login(testUser1);
+      await loginPage.login(testUser1);
 
-    await loginPage.header.myAccountButton.click();
-    await expect(page).toHaveURL('/my-account');
-  });
+      await loginPage.header.myAccountButton.click();
+      await expect(page).toHaveURL('/my-account');
+    },
+  );
 
   test('reject login with incorrect password', async ({ page }) => {
     // Arrange
