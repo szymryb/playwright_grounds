@@ -1,6 +1,6 @@
 import { Locator, Page } from '@playwright/test';
 import { Header } from '../components/header.ts';
-import { LoginUser } from '../models/user.models.ts';
+import { LoginUser } from '../models/user.model.ts';
 
 export class LoginPage {
   loginInput: Locator;
