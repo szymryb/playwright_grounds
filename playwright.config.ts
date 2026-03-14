@@ -1,13 +1,12 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
 import { defineConfig, devices } from '@playwright/test';
-require('dotenv').config();
+import 'dotenv/config';
 
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
   testDir: './tests',
-  globalSetup: require.resolve('./src/test-data/global-setup.ts'),
+  globalSetup: './src/test-data/global-setup.ts',
   timeout: 60_000,
   expect: { timeout: 10_000 },
   fullyParallel: true,

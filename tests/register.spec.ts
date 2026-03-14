@@ -7,7 +7,7 @@ import { RegisterPage } from '../src/pages/register.page.ts';
 
 test.describe('Verify registration', () => {
   test('successful registration with correct credentials', async ({ page }) => {
-    const registerUserData = await randomUserData();
+    const registerUserData = randomUserData();
     const cookiesPage = new CookiesPage(page);
     const homePage = new HomePage(page);
     const loginPage = new LoginPage(page);

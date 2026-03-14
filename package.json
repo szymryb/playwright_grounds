@@ -1,6 +1,7 @@
 {
   "name": "playwright_grounds",
   "version": "1.0.0",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "npx playwright test",
@@ -34,8 +35,6 @@
     "typescript-eslint": "^8.54.0"
   },
   "dependencies": {
-    "@faker-js/faker": "^10.3.0",
-    "type": "module",
-    "node": "25.8.1"
+    "@faker-js/faker": "^10.3.0"
   }
 }
