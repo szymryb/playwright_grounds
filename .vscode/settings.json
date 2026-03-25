@@ -4,5 +4,13 @@
   "editor.codeActionsOnSave": {
     "source.organizeImports": "explicit"
   },
-  "cSpell.words": ["trivago", "viewports"]
+  "cSpell.words": ["trivago", "viewports"],
+  "json.schemas": [
+    {
+      "fileMatch": ["/.vscode/mcp.json"],
+      "schema": {
+        "additionalProperties": true
+      }
+    }
+  ]
 }
