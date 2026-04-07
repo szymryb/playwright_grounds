@@ -1,10 +1,10 @@
-export interface RegisterUser {
+export interface RegisterUserModel {
   userEmail: string;
   userFirstName: string;
   userLastName: string;
   userPassword: string;
 }
-export interface LoginUser {
+export interface LoginUserModel {
   userEmail: string;
   userPassword: string;
 }

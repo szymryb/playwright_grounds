@@ -1,6 +1,6 @@
 import { Locator, Page } from '@playwright/test';
 import { Header } from '../components/header.ts';
-import { RegisterUser } from '../models/user.model.ts';
+import { RegisterUserModel } from '../models/user.model.ts';
 
 export class RegisterPage {
   registrationModalButton: Locator;
@@ -44,7 +44,7 @@ export class RegisterPage {
     this.header = new Header(this.page);
   }
 
-  async register(registerUserData: RegisterUser): Promise<void> {
+  async register(registerUserData: RegisterUserModel): Promise<void> {
     await this.userEmailInput.fill(registerUserData.userEmail);
     await this.userFirstNameInput.fill(registerUserData.userFirstName);
     await this.userLastNameInput.fill(registerUserData.userLastName);
