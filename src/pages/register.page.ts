@@ -1,6 +1,6 @@
 import { Locator, Page } from '@playwright/test';
-import { Header } from '../components/header.ts';
-import { RegisterUserModel } from '../models/user.model.ts';
+import { Header } from '../components/header.js';
+import { RegisterUserModel } from '../models/user.model.js';
 
 export class RegisterPage {
   registrationModalButton: Locator;

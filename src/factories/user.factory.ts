@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker';
-import { RegisterUser } from '../models/user.model.ts';
+import { RegisterUserModel } from '../models/user.model.js';
 
-export function randomUserData(): RegisterUser {
+export function randomUserData(): RegisterUserModel {
   return {
     userFirstName: faker.person.firstName(),
     userLastName: faker.person.lastName(),

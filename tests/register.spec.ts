@@ -1,9 +1,9 @@
 import { expect, test } from '@playwright/test';
-import { randomUserData } from '../src/factories/user.factory.ts';
-import { CookiesPage } from '../src/pages/cookies.page.ts';
-import { HomePage } from '../src/pages/homepage.page.ts';
-import { LoginPage } from '../src/pages/login.page.ts';
-import { RegisterPage } from '../src/pages/register.page.ts';
+import { randomUserData } from '../src/factories/user.factory.js';
+import { CookiesPage } from '../src/pages/cookies.page.js';
+import { HomePage } from '../src/pages/homepage.page.js';
+import { LoginPage } from '../src/pages/login.page.js';
+import { RegisterPage } from '../src/pages/register.page.js';
 
 test.describe('Verify registration', () => {
   test('successful registration with correct credentials', async ({ page }) => {

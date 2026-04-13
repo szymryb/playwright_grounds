@@ -1,9 +1,9 @@
 import { expect, test } from '@playwright/test';
-import { LoginUser } from '../src/models/user.model.ts';
-import { CookiesPage } from '../src/pages/cookies.page.ts';
-import { HomePage } from '../src/pages/homepage.page.ts';
-import { LoginPage } from '../src/pages/login.page.ts';
-import { testUser1 } from '../src/test-data/login.data.ts';
+import { LoginUserModel } from '../src/models/user.model.js';
+import { CookiesPage } from '../src/pages/cookies.page.js';
+import { HomePage } from '../src/pages/homepage.page.js';
+import { LoginPage } from '../src/pages/login.page.js';
+import { testUser1 } from '../src/test-data/login.data.js';
 
 test.describe('Verify login', () => {
   test(
@@ -35,7 +35,7 @@ test.describe('Verify login', () => {
 
   test('reject login with incorrect password', async ({ page }) => {
     // Arrange
-    const loginUserData: LoginUser = {
+    const loginUserData: LoginUserModel = {
       userEmail: testUser1.userEmail,
       userPassword: 'incorrectPassword',
     };
